@@ -4,11 +4,15 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <div>
-      <h5>
-        <Link href="/post/1">
-          <a>Go to pages/post/1.js</a>
-        </Link>
-      </h5>
+      {['1', '2', '3', '4', '5'].map((index) => {
+        return (
+          <h5>
+            <Link href={`/post/${index}`}>
+              <a>Go to pages/post/{index}.js</a>
+            </Link>
+          </h5>
+        )
+      })}
     </div>
   )
 }
