@@ -4,16 +4,46 @@ const Header = () => {
   return (
     <HeaderContainer>
       <NavArea>
-        <LogoLink id="link-1" type="radio">Kiki Luo</LogoLink>
-        <Link id="link-2" type="radio">WORK</Link>
-        <Link id="link-3" type="radio">BLOG</Link>
-        <Link id="link-4" type="radio">ABOUT</Link>
+        <InputContainer>
+          <Input id="Button-1" type="radio" name="headerLink" />
+          <LogoButton for="Button-1">Kiki Luo</LogoButton>
+          <Input id="Button-2" type="radio" name="headerLink" />
+          <Button for="Button-2">WORK</Button>
+          <Input id="Button-3" type="radio" name="headerLink" />
+          <Button for="Button-3">BLOG</Button>
+          <Input id="Button-4" type="radio" name="headerLink" />
+          <Button for="Button-4">ABOUT</Button>
+          <BgColorBlock />
+        </InputContainer>
       </NavArea>
     </HeaderContainer>
   )
 }
 
 export default Header;
+
+const BgColorBlock = styled.span`
+  position: absolute;
+	height: 20px;
+	width: 60px;
+	background-color: red;
+	z-index: 1;
+  transition: 0.25s ease-out;
+  left: 140px;
+  top: 5px;
+`
+
+const Input = styled.input`
+  display: none;
+  &:checked {
+		& + label {
+			color: blue;
+		}
+	}
+`
+const InputContainer = styled.div`
+  position: relative;
+`
 
 const NavArea = styled.div`
   max-width: 1440px;
@@ -24,17 +54,55 @@ const NavArea = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin: 0px 30px;
+
+  input[id="Button-1"] {
+    &:checked {
+      & ~ span {
+			transform: translateX(-180%);
+      }
+		}
+  }
+
+  input[id="Button-2"] {
+    &:checked {
+      & ~ span {
+			transform: translateX(0px);
+		  }
+    }
+  }
+
+  input[id="Button-3"] {
+    &:checked {
+      & ~ span {
+			transform: translateX(130%);
+			}
+    }
+  }
+
+  input[id="Button-4"] {
+    &:checked {
+      & ~ span {
+			transform: translateX(265%);
+			}
+    }
+  }
+
+
+
 `
-const Link = styled.div`
+const Button = styled.label`
+  position: relative;
   color: grey;
   margin: 0 20px;
   font-size: 13px;
   letter-spacing: 1px;
+  z-index: 2;
+  transition: color 0.15s ease-in;
   :hover{
     border-bottom:2px black solid;　
   }
 `
-const LogoLink = styled(Link)`
+const LogoButton = styled(Button)`
   color: black;
   font-weight: 600;
   font-size: 20px;
