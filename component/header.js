@@ -9,6 +9,8 @@ const Header = () => {
     router.push(href)
   };
 
+  //TODO: mobile version of header
+
   const linkConfig = [
     {
       title: 'Kiki Luo',
