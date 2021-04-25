@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import React, { Fragment } from 'react'
 
 const Header = () => {
   const router = useRouter();
@@ -8,19 +9,48 @@ const Header = () => {
     router.push(href)
   };
 
+  const linkConfig = [
+    {
+      title: 'Kiki Luo',
+      link: '/',
+      main: true
+    }, {
+      title: 'WORK',
+      link: '/work',
+      main: false
+    }, {
+      title: 'BLOG',
+      link: '/post',
+      main: false
+    }, {
+      title: 'ABOUT',
+      link: '/about',
+      main: false
+    }
+  ]
+
+
 
   return (
     <HeaderContainer>
       <NavArea>
         <InputContainer>
-          <Input id="Button-1" type="radio" name="headerLink" defaultChecked={router.pathname === '/'} />
-          <LogoButton for="Button-1" onClick={() => { clickMenu('/work') }}>Kiki Luo</LogoButton>
-          <Input id="Button-2" type="radio" name="headerLink" defaultChecked={router.pathname === '/work'} />
-          <Button for="Button-2" onClick={() => { clickMenu('/work') }}>WORK</Button>
-          <Input id="Button-3" type="radio" name="headerLink" defaultChecked={router.pathname === '/post'} />
-          <Button for="Button-3" onClick={() => { clickMenu('/post') }}>BLOG</Button>
-          <Input id="Button-4" type="radio" name="headerLink" defaultChecked={router.pathname === '/about'} />
-          <Button for="Button-4" onClick={() => { clickMenu('/about') }}>ABOUT</Button>
+          {
+            linkConfig.map((linkInfor, index) => {
+              const { title, link, main } = linkInfor
+              index = index + 1
+              return (
+                <React.Fragment key={link}>
+                  <Input id={`Button-${index}`} type="radio" name="headerLink" defaultChecked={router.pathname === link} />
+                  {
+                    main ?
+                      <LogoButton for={`Button-${index}`} onClick={() => { clickMenu(link) }}>{title}</LogoButton> :
+                      <Button for={`Button-${index}`} onClick={() => { clickMenu(link) }}>{title}</Button>
+                  }
+                </React.Fragment>
+              )
+            })
+          }
           <BgColorBlock />
         </InputContainer>
       </NavArea>
