@@ -1,18 +1,26 @@
 import styled from 'styled-components'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Header = () => {
+  const router = useRouter();
+  const clickMenu = (href) => {
+    router.push(href)
+  };
+
+
   return (
     <HeaderContainer>
       <NavArea>
         <InputContainer>
-          <Input id="Button-1" type="radio" name="headerLink" />
-          <LogoButton for="Button-1">Kiki Luo</LogoButton>
-          <Input id="Button-2" type="radio" name="headerLink" />
-          <Button for="Button-2">WORK</Button>
-          <Input id="Button-3" type="radio" name="headerLink" />
-          <Button for="Button-3">BLOG</Button>
-          <Input id="Button-4" type="radio" name="headerLink" />
-          <Button for="Button-4">ABOUT</Button>
+          <Input id="Button-1" type="radio" name="headerLink" defaultChecked={router.pathname === '/'} />
+          <LogoButton for="Button-1" onClick={() => { clickMenu('/work') }}>Kiki Luo</LogoButton>
+          <Input id="Button-2" type="radio" name="headerLink" defaultChecked={router.pathname === '/work'} />
+          <Button for="Button-2" onClick={() => { clickMenu('/work') }}>WORK</Button>
+          <Input id="Button-3" type="radio" name="headerLink" defaultChecked={router.pathname === '/post'} />
+          <Button for="Button-3" onClick={() => { clickMenu('/post') }}>BLOG</Button>
+          <Input id="Button-4" type="radio" name="headerLink" defaultChecked={router.pathname === '/about'} />
+          <Button for="Button-4" onClick={() => { clickMenu('/about') }}>ABOUT</Button>
           <BgColorBlock />
         </InputContainer>
       </NavArea>

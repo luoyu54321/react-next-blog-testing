@@ -7,7 +7,6 @@ import ErrorBoundary from '../component/errorBoundary'
 export default function Home() {
   return (
     <ErrorBoundary>
-      <Header />
       <ContentContainer />
     </ErrorBoundary>
   )
