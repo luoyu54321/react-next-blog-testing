@@ -26,20 +26,18 @@ const BgColorBlock = styled.span`
   position: absolute;
 	height: 20px;
 	width: 60px;
-	background-color: red;
+	background-color: #ffe9f6;
+  border-radius: 25px;
 	z-index: 1;
   transition: 0.25s ease-out;
-  left: 140px;
+  left: 138px;
   top: 5px;
+  padding: 10px 10px;
+
 `
 
 const Input = styled.input`
   display: none;
-  &:checked {
-		& + label {
-			color: blue;
-		}
-	}
 `
 const InputContainer = styled.div`
   position: relative;
@@ -58,7 +56,8 @@ const NavArea = styled.div`
   input[id="Button-1"] {
     &:checked {
       & ~ span {
-			transform: translateX(-180%);
+			transform: translateX(-145%);
+      width: 80px;
       }
 		}
   }
@@ -82,11 +81,11 @@ const NavArea = styled.div`
   input[id="Button-4"] {
     &:checked {
       & ~ span {
-			transform: translateX(265%);
+			transform: translateX(243%);
+      width: 65px;
 			}
     }
   }
-
 
 
 `
@@ -116,4 +115,6 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: start;
+  position: fixed;
+  width: 100%;
 `
