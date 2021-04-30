@@ -3,12 +3,14 @@ import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
 import marked from '/usr/local/lib/node_modules/marked/lib/marked.esm.js'
+import postConfig from '../post/postConfig'
 
 
 export default function Posts({ postData }) {
+  const html = marked(postData.content);
   return (
     <div>
-      this is blog : {postData.title}
+      <div dangerouslySetInnerHTML={{ __html: html }} />
       <h5>
         <Link href="/">
           <a>HOME PAGE</a>
@@ -17,6 +19,7 @@ export default function Posts({ postData }) {
     </div>
   )
 }
+
 
 export async function getStaticPaths() {
   const paths = getPostId()
@@ -28,15 +31,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postsDirectory = path.join(process.cwd(), '/pages/post/postContent')
-  const fileNames = fs.readdirSync(postsDirectory)
-  fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, '')
-    const fullPath = path.join(postsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const htmlResult = marked(fileContents);
-    console.log(htmlResult)
-  })
   const postData = getPostData(params.id)
   return {
     props: {
@@ -48,19 +42,20 @@ export async function getStaticProps({ params }) {
 const getPostId = () => {
   //Each object must have the params key and contain an object with the id key (because we’re using [id] in the file name)
   //const res = await fetch('https://.../posts')
-  return ['1', '2', '3', '4', '5'].map((id) => {
+  return postConfig.map((item) => {
     return {
       params: {
-        id: id
+        id: Object.keys(item)[0]
       }
     }
   })
 };
 
 const getPostData = (id) => {
+  const post = postConfig.filter(item => Object.keys(item)[0] === id)
   const content = {
     title: id,
-    content: 'this is a sentence'
+    content: post[0][id]
   }
   return {
     id,
