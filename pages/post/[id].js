@@ -1,5 +1,9 @@
 
 import Link from 'next/link'
+import fs from 'fs'
+import path from 'path'
+import marked from '/usr/local/lib/node_modules/marked/lib/marked.esm.js'
+
 
 export default function Posts({ postData }) {
   return (
@@ -24,6 +28,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const postsDirectory = path.join(process.cwd(), '/pages/post/postContent')
+  const fileNames = fs.readdirSync(postsDirectory)
+  fileNames.map((fileName) => {
+    const id = fileName.replace(/\.md$/, '')
+    const fullPath = path.join(postsDirectory, fileName)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const htmlResult = marked(fileContents);
+    console.log(htmlResult)
+  })
   const postData = getPostData(params.id)
   return {
     props: {
