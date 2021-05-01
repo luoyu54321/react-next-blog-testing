@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
-import marked from '/usr/local/lib/node_modules/marked/lib/marked.esm.js'
+import marked from 'marked'
 
 
 export default function Posts({ postData }) {
