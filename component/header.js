@@ -10,6 +10,7 @@ const Header = () => {
   };
 
   //TODO: env file to handle path
+  //https://nextjs.org/docs/basic-features/environment-variables
 
   const linkConfig = [
     {
@@ -31,7 +32,7 @@ const Header = () => {
       <HeaderContainer>
         <ImageLogoContainer>
           <Image
-            src="/react-next-blog-with-tracking-test/kk-logo.svg"
+            src="/kk-logo.svg"
             alt="kkluo blog logo"
           />
         </ImageLogoContainer>
