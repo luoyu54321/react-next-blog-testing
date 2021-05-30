@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { Fragment } from 'react'
+import React from 'react'
 import Image from 'next/image'
+import _JSXStyle from "styled-jsx/style";
 
 const Header = () => {
   const router = useRouter();
@@ -30,12 +30,14 @@ const Header = () => {
   return (
     <Navcolor>
       <HeaderContainer>
-        <Image
-          src="/react-next-blog-with-tracking-test/kk-logo.svg"
-          alt="kkluo blog logo"
-          width={170}
-          height={50}
-        />
+        <ImageLogoContainer>
+          <Image
+            src="/react-next-blog-with-tracking-test/kk-logo.svg"
+            alt="kkluo blog logo"
+            width={140}
+            height={40}
+          />
+        </ImageLogoContainer>
         <NavArea>
           <InputContainer>
             {
@@ -60,8 +62,23 @@ const Header = () => {
   )
 }
 
+//header container 小於 600px 就 column 上下都 fixed 住
 
 export default Header;
+
+const ImageLogoContainer = styled.div`
+    display: flex;
+    justify-content: center;
+
+  @media only screen and (max-width: 600px) {
+    position: fixed;
+    box-shadow: 0 0 1px 0 #dfe2e8, 0 6px 12px 0 #edf0f5;
+    width: 100%;
+    top: 0px;
+    padding: 10px 0 5px;
+    background-color: white;
+  }
+`
 
 const Icon = styled.div`
 position: absolute;
@@ -85,7 +102,7 @@ const Navcolor = styled.div`
 const BgColorBlock = styled.span`
   position: absolute;
   width: 60px;
-  background-color: #f5f5f5;
+  background-color: #f9f6f6;
   border-radius: 25px;
   z-index: -1;
   transition: 0.25s ease-out;
@@ -157,6 +174,57 @@ const NavArea = styled.div`
       }
     }
 
+    @media only screen and (max-width: 600px) {
+      position: fixed;
+      bottom: 30px;
+    }
+
+    @media only screen and (max-width: 400px) {
+      width: 100%;
+      bottom: 0px;
+      border-radius: 0px;
+      label[id="Label-1"]{
+        padding-left:20px;
+    }
+
+    input[id="Button-2"] {
+    &:checked {
+      & ~ label[id="Label-2"]{
+        color: #ff6a00;
+      }
+      & ~ span{
+        transform: translateX(calc(100px));
+        }
+      }
+    }
+
+    input[id="Button-3"] {
+    &:checked {
+      & ~ label[id="Label-3"]{
+        color: #ff6a00;
+      }
+      & ~ span{
+        transform: translateX(calc(200px));
+        width: 100px;
+        }
+      }
+    }
+
+    label[id="Label-1"]{
+        padding-left:40px;
+    }
+
+    label[id="Label-2"]{
+        padding-left:15px;
+    }
+
+    label[id="Label-3"]{
+        padding-left:25px;
+    }
+
+
+    }
+
 `
 
 const Button = styled.label`
@@ -175,6 +243,9 @@ const HeaderContainer = styled.div`
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    @media only screen and (max-width: 600px) {
+      flex-flow: column nowrap;
+      align-items: center;
+      padding: 30px 30px;
+    }
 `
-
-//600以下是手機版
