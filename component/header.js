@@ -37,23 +37,25 @@ const Header = () => {
           />
         </ImageLogoContainer>
         <NavArea>
-          <InputContainer>
-            {
-              linkConfig.map((linkInfor, index) => {
-                const { title, link } = linkInfor
-                index = index + 1
-                return (
-                  <React.Fragment key={link}>
-                    <Input id={`Button-${index}`} type="radio" name="headerLink" defaultChecked={router.pathname === link} />
-                    <Button id={`Label-${index}`} for={`Button-${index}`} onClick={() => { clickMenu(link) }}>{title}</Button>
-                  </React.Fragment>
-                )
-              })
-            }
-            <BgColorBlock id="Background-color">
-              <Icon>L</Icon>
-            </BgColorBlock>
-          </InputContainer>
+          <div>
+            <InputContainer>
+              {
+                linkConfig.map((linkInfor, index) => {
+                  const { title, link } = linkInfor
+                  index = index + 1
+                  return (
+                    <React.Fragment key={link}>
+                      <Input id={`Button-${index}`} type="radio" name="headerLink" defaultChecked={router.pathname === link} />
+                      <Button id={`Label-${index}`} for={`Button-${index}`} onClick={() => { clickMenu(link) }}>{title}</Button>
+                    </React.Fragment>
+                  )
+                })
+              }
+              <BgColorBlock id="Background-color">
+                <Icon>L</Icon>
+              </BgColorBlock>
+            </InputContainer>
+          </div>
         </NavArea>
       </HeaderContainer>
     </Navcolor>
@@ -115,6 +117,9 @@ const BgColorBlock = styled.span`
   left: 10px;
   top: 8px;
   width: 110px;
+  @media only screen and (max-width: 400px) {
+    top: -6px;
+    }
 `
 
 const Input = styled.input`
@@ -123,6 +128,10 @@ const Input = styled.input`
 const InputContainer = styled.div`
     width: 100%;
     padding: 0 10px;
+      @media only screen and (max-width: 400px) {
+    position: relative;
+    }
+        
 `
 
 
