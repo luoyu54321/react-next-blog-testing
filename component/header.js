@@ -79,7 +79,7 @@ const ImageLogoContainer = styled.div`
 
   @media only screen and (max-width: 600px) {
     position: fixed;
-    box-shadow: 0 0 1px 0 #dfe2e8, 0 6px 12px 0 #edf0f5;
+    box-shadow: 0 0 1px 0 #dfe2e8;
     width: 100%;
     top: 0px;
     padding: 10px 0 5px;
