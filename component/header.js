@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import React from 'react'
-import Image from 'next/image'
 import _JSXStyle from "styled-jsx/style";
 
 const Header = () => {
@@ -34,8 +33,6 @@ const Header = () => {
           <Image
             src="/react-next-blog-with-tracking-test/kk-logo.svg"
             alt="kkluo blog logo"
-            width={140}
-            height={40}
           />
         </ImageLogoContainer>
         <NavArea>
@@ -66,9 +63,16 @@ const Header = () => {
 
 export default Header;
 
+const Image = styled.img`
+    width:140px;
+    height:40px;
+`
+
 const ImageLogoContainer = styled.div`
     display: flex;
     justify-content: center;
+    align-items: center;
+
 
   @media only screen and (max-width: 600px) {
     position: fixed;
