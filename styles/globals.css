@@ -3,6 +3,9 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Noto Sans TC", sans-serif;
+  background-color: #f7f8f9;
+  max-width: 800px;
+  margin: auto;
 }
 
 a {
