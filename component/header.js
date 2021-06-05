@@ -28,7 +28,7 @@ const Header = () => {
     <Navcolor>
       <HeaderContainer>
         <ImageLogoContainer>
-          <LogoImage
+          <img
             src="/kk-logo.svg"
             alt="kkluo blog logo"
           />
@@ -63,12 +63,10 @@ const Header = () => {
 
 export default Header;
 
-const LogoImage = styled.img`
-    width:140px;
-    height:40px;
-`
 
 const ImageLogoContainer = styled.div`
+    width:140px;
+    height:40px;
     display: flex;
     justify-content: center;
     align-items: center;
