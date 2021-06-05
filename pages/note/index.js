@@ -17,8 +17,8 @@ export default function Home() {
         <meta name="og:image" content="/kk-logo.svg" key="og:image" />
         <meta name="og:title" content="KK Blog | Note" key="og:title" />
         <meta name="og:description" content="KK Blog 紀錄一個前端工程師的學習筆記與專案作品。聯絡我：contact@kkluo.com" key="og:description" />
-        <meta name="og:url" content="https://blog.kkluo.com/" key="og:url" />
-        <link rel="canonical" href="https://blog.kkluo.com/" key="og:url"></link>
+        <meta name="og:url" content="https://blog.kkluo.com/note" key="og:url" />
+        <link rel="canonical" href="https://blog.kkluo.com/note" key="og:url"></link>
       </Head>
       <ContentContainer>
         {customData.map((post, index) => {
