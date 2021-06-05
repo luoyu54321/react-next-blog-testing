@@ -16,7 +16,10 @@ export default function Home() {
         <meta name="og:description" content="KK Blog 紀錄一個前端工程師的學習筆記與專案作品。聯絡我：contact@kkluo.com" key="og:description" />
         <meta name="og:url" content="https://blog.kkluo.com/" key="og:url" />
         <link rel="canonical" href="https://blog.kkluo.com/" key="og:url"></link>
-        <link rel="shortcut icon" href="/favicon.ico"></link>
+        <link rel="shortcut icon" href="..//favicon.ico"></link>
+        <link rel="icon" type="image/png" sizes="32x32" href="..//favicon-32x32.png"></link>
+        <link rel="icon" type="image/png" sizes="96x96" href="..//favicon-96x96.png"></link>
+        <link rel="icon" type="image/png" sizes="16x16" href=".//favicon-16x16.png"></link>
       </Head>
       <ContentContainer>
         <Text>coming soon...</Text>
@@ -37,6 +40,6 @@ const ContentContainer = styled.div`
   margin-top: 120px;
   height: 1000px;
   @media only screen and (max-width: 600px) {
-      margin-top: 80px;
+            margin - top: 80px;
     }
 `
