@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import React from 'react'
-import _JSXStyle from "styled-jsx/style";
+import Image from 'next/image'
 
 const Header = () => {
   const router = useRouter();
@@ -25,15 +25,19 @@ const Header = () => {
     }
   ]
 
-
-
   return (
     <Navcolor>
       <HeaderContainer>
         <ImageLogoContainer>
+          <LogoImage
+            src="/kk-logo.svg"
+            alt="kkluo blog logo"
+          />
           <Image
             src="/kk-logo.svg"
             alt="kkluo blog logo"
+            width={140}
+            height={40}
           />
         </ImageLogoContainer>
         <NavArea>
@@ -66,7 +70,7 @@ const Header = () => {
 
 export default Header;
 
-const Image = styled.img`
+const LogoImage = styled.img`
     width:140px;
     height:40px;
 `

@@ -2,7 +2,7 @@ const debug = process.env.NODE_ENV !== "production";
 
 module.exports = {
   basePath: '',
-  assetPrefix: !debug ? 'https://blog.kkluo.com/' : '',
+  assetPrefix: process.env.DOMAIN_PATH,
   webpack: (config, { isServer }) => {
     // Fixes npm packages that depend on `fs` module
     if (!isServer) {
@@ -10,7 +10,6 @@ module.exports = {
         fs: 'empty'
       }
     }
-
     return config
-  }
+  },
 }
