@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { Logo } from './images/kk-logo.js'
 
 const Header = () => {
   const router = useRouter();
@@ -28,10 +29,7 @@ const Header = () => {
     <Navcolor>
       <HeaderContainer>
         <ImageLogoContainer>
-          <img
-            src="/kk-logo.svg"
-            alt="kkluo blog logo"
-          />
+          <Logo />
         </ImageLogoContainer>
         <NavArea>
           <div>
@@ -65,8 +63,6 @@ export default Header;
 
 
 const ImageLogoContainer = styled.div`
-    width:140px;
-    height:40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,8 +71,8 @@ const ImageLogoContainer = styled.div`
   @media only screen and (max-width: 600px) {
     position: fixed;
     box-shadow: 0 0 1px 0 #dfe2e8;
-    width: 100%;
     top: 0px;
+    width: 100%;
     padding: 10px 0 5px;
     background-color: white;
   }
