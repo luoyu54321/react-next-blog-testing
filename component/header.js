@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import React from 'react'
-import Image from 'next/image'
 
 const Header = () => {
   const router = useRouter();
@@ -32,12 +31,6 @@ const Header = () => {
           <LogoImage
             src="/kk-logo.svg"
             alt="kkluo blog logo"
-          />
-          <Image
-            src="/kk-logo.svg"
-            alt="kkluo blog logo"
-            width={140}
-            height={40}
           />
         </ImageLogoContainer>
         <NavArea>
