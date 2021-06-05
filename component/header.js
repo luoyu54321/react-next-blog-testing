@@ -15,10 +15,10 @@ const Header = () => {
   const linkConfig = [
     {
       title: 'WORK',
-      link: '/work'
+      link: '/'
     }, {
-      title: 'BLOG',
-      link: '/post'
+      title: 'NOTE',
+      link: '/note/'
     }, {
       title: 'LINK',
       link: '/link'
@@ -248,6 +248,10 @@ const HeaderContainer = styled.div`
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: rgba(247,248,249,0.9);
     @media only screen and (max-width: 600px) {
       flex-flow: column nowrap;
       align-items: center;
