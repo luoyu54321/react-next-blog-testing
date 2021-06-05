@@ -16,6 +16,7 @@ export default function Home() {
         <meta name="og:description" content="KK Blog 紀錄一個前端工程師的學習筆記與專案作品。聯絡我：contact@kkluo.com" key="og:description" />
         <meta name="og:url" content="https://blog.kkluo.com/" key="og:url" />
         <link rel="canonical" href="https://blog.kkluo.com/" key="og:url"></link>
+        <link rel="shortcut icon" href="/favicon.ico"></link>
       </Head>
       <ContentContainer>
         <Text>coming soon...</Text>
