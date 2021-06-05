@@ -52,7 +52,7 @@ export async function getStaticProps({ params }) {
 
 const getPost = () => {
   const postConfig = []
-  const postsDirectory = path.join(process.cwd(), '/pages/note//postContent')
+  const postsDirectory = path.join(process.cwd(), '/pages/note/postContent')
   const fileNames = fs.readdirSync(postsDirectory)
   fileNames.map((fileName, index) => {
     const id = fileName.replace(/\.md$/, '')
@@ -61,7 +61,7 @@ const getPost = () => {
     const htmlResult = marked(fileContents);
     postConfig.push({ [id]: htmlResult })
   })
-  fs.writeFile("pages/note//data.json", JSON.stringify(postConfig), function (err, result) {
+  fs.writeFile("pages/note/data.json", JSON.stringify(postConfig), function (err, result) {
     if (err) console.log('error', err);
   })
   return postConfig

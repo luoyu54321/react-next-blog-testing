@@ -14,7 +14,7 @@ const getPost = () => {
     const htmlResult = marked(fileContents);
     postConfig.push({ [id]: htmlResult })
   })
-  fs.writeFile("pages/note//data.json", JSON.stringify(postConfig), function (err, result) {
+  fs.writeFile("pages/note/data.json", JSON.stringify(postConfig), function (err, result) {
     if (err) console.log('error', err);
   })
 }
