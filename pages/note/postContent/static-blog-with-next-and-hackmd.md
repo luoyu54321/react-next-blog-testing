@@ -1,6 +1,6 @@
 
-# 使用 Next.js, Gh-pages, Hackmd 建立即時更新的個人 blog 的經驗分享
-## 以個人專案為例文字紀錄
+#  [實作紀錄] 使用 Next.js, Gh-pages, Hackmd 建立即時更新的個人 blog
+###### Next,Dynamic Route,Github Action, Hackmd
 
 
 1. Create Next App
@@ -10,5 +10,6 @@
 5. Connect to Hackmd (Building Sites when Push)
 6. Blog layout and 整理資料格式 [結果超難搞 hahaha fs file](https://github.com/vercel/next.js/issues/7755)
 7. UPDATE AND BUILD: PACKAGE.JSON
-8. 之後需要額外整理的：env file
-9. Why using this way ?
+8. 但 hackmd 樣式需要調整 & 不會顯示出影片嵌入之類的紀錄
+9. 之後需要額外整理的：env file
+10. Why using this way ?
