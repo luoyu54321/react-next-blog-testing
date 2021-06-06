@@ -67,8 +67,24 @@ export async function getStaticProps({ params }) {
   }
 }
 
+const getFirstElementContent = (string, ele) => {
+  const eleStartIndex = string.indexOf(`<${ele}`);
+  if (eleStartIndex > -1) {
+    const startElementTagLength = `<${ele}`.length;
+    const eleEndIndex = string.indexOf(`/${ele}>`);
+    const elementString = string.slice(eleStartIndex + startElementTagLength, eleEndIndex);
+    const contentStartIndex = elementString.indexOf(">") + 1;
+    const contentEndtIndex = elementString.indexOf("<");
+    const elementContent = elementString.slice(contentStartIndex, contentEndtIndex);
+    return elementContent
+  } else {
+    return ""
+  }
+}
+
 const getPost = () => {
-  const postConfig = []
+  const svrPostConfig = []
+  const clientSidePostConfig = []
   const postsDirectory = path.join(process.cwd(), '/pages/note/postContent')
   const fileNames = fs.readdirSync(postsDirectory)
   fileNames.map((fileName, index) => {
@@ -76,12 +92,28 @@ const getPost = () => {
     const fullPath = path.join(postsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const htmlResult = marked(fileContents);
-    postConfig.push({ [id]: htmlResult })
+    const h1Content = getFirstElementContent(htmlResult, "h1")
+    const h6Content = getFirstElementContent(htmlResult, "h6")
+    let page
+    if (index === 0) {
+      page = Math.floor((index) / 5)
+    } else {
+      page = Math.floor((index - 1) / 5)
+    }
+    svrPostConfig.push({ [id]: htmlResult })
+    clientSidePostConfig.push({
+      [id]: {
+        "htmlResult": htmlResult,
+        "title": h1Content,
+        "tag": h6Content,
+        "page": page
+      }
+    })
   })
-  fs.writeFile("pages/note/data.json", JSON.stringify(postConfig), function (err, result) {
+  fs.writeFile("pages/note/data.json", JSON.stringify(clientSidePostConfig), function (err, result) {
     if (err) console.log('error', err);
   })
-  return postConfig
+  return svrPostConfig
 }
 
 const getPostId = () => {
