@@ -9,7 +9,6 @@ import Head from 'next/head'
 
 export default function Posts({ postData }) {
   const html = marked(postData.content);
-  console.log(postData.content);
   return (
     <div>
       <Head>
@@ -29,7 +28,7 @@ export default function Posts({ postData }) {
         <link rel="icon" type="image/png" sizes="16x16" href=".//favicon-16x16.png"></link>
       </Head>
       <ContentContainer>
-
+        <div dangerouslySetInnerHTML={{ __html: html }} />
         <h5>
           <Link href="/">
             <a>HOME PAGE</a>
@@ -39,7 +38,7 @@ export default function Posts({ postData }) {
     </div>
   )
 }
-//<div dangerouslySetInnerHTML={{ __html: html }} />
+
 
 export async function getStaticPaths() {
   const paths = getPostId()
@@ -84,7 +83,8 @@ const getFirstElementContent = (string, ele) => {
 }
 
 const getPost = () => {
-  const postConfig = []
+  const svrPostConfig = []
+  const clientSidePostConfig = []
   const postsDirectory = path.join(process.cwd(), '/pages/note/postContent')
   const fileNames = fs.readdirSync(postsDirectory)
   fileNames.map((fileName, index) => {
@@ -100,7 +100,8 @@ const getPost = () => {
     } else {
       page = Math.floor((index - 1) / 5)
     }
-    postConfig.push({
+    svrPostConfig.push({ [id]: htmlResult })
+    clientSidePostConfig.push({
       [id]: {
         "htmlResult": htmlResult,
         "title": h1Content,
@@ -109,10 +110,10 @@ const getPost = () => {
       }
     })
   })
-  fs.writeFile("pages/note/data.json", JSON.stringify(postConfig), function (err, result) {
+  fs.writeFile("pages/note/data.json", JSON.stringify(clientSidePostConfig), function (err, result) {
     if (err) console.log('error', err);
   })
-  return postConfig
+  return svrPostConfig
 }
 
 const getPostId = () => {

@@ -18,7 +18,7 @@ const getFirstElementContent = (string, ele) => {
 }
 
 const getPost = () => {
-  const postConfig = []
+  const clientSidePostConfig = []
   const postsDirectory = path.join(process.cwd(), '/pages/note/postContent')
   const fileNames = fs.readdirSync(postsDirectory)
   fileNames.map((fileName, index) => {
@@ -34,7 +34,7 @@ const getPost = () => {
     } else {
       page = Math.floor((index - 1) / 5)
     }
-    postConfig.push({
+    clientSidePostConfig.push({
       [id]: {
         "htmlResult": htmlResult,
         "title": h1Content,
@@ -43,12 +43,9 @@ const getPost = () => {
       }
     })
   })
-  fs.writeFile("pages/note/data.json", JSON.stringify(postConfig), function (err, result) {
+  fs.writeFile("pages/note/data.json", JSON.stringify(clientSidePostConfig), function (err, result) {
     if (err) console.log('error', err);
   })
-  return postConfig
 }
-
-
 
 module.exports.getPost = getPost();
