@@ -40,6 +40,6 @@ const ContentContainer = styled.div`
   margin-top: 120px;
   height: 1000px;
   @media only screen and (max-width: 600px) {
-            margin - top: 80px;
+            margin-top: 80px;
     }
 `
