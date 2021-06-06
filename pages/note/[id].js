@@ -9,6 +9,7 @@ import Head from 'next/head'
 
 export default function Posts({ postData }) {
   const html = marked(postData.content);
+  console.log(postData.content);
   return (
     <div>
       <Head>
@@ -28,7 +29,7 @@ export default function Posts({ postData }) {
         <link rel="icon" type="image/png" sizes="16x16" href=".//favicon-16x16.png"></link>
       </Head>
       <ContentContainer>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+
         <h5>
           <Link href="/">
             <a>HOME PAGE</a>
@@ -38,7 +39,7 @@ export default function Posts({ postData }) {
     </div>
   )
 }
-
+//<div dangerouslySetInnerHTML={{ __html: html }} />
 
 export async function getStaticPaths() {
   const paths = getPostId()
@@ -67,6 +68,21 @@ export async function getStaticProps({ params }) {
   }
 }
 
+const getFirstElementContent = (string, ele) => {
+  const eleStartIndex = string.indexOf(`<${ele}`);
+  if (eleStartIndex > -1) {
+    const startElementTagLength = `<${ele}`.length;
+    const eleEndIndex = string.indexOf(`/${ele}>`);
+    const elementString = string.slice(eleStartIndex + startElementTagLength, eleEndIndex);
+    const contentStartIndex = elementString.indexOf(">") + 1;
+    const contentEndtIndex = elementString.indexOf("<");
+    const elementContent = elementString.slice(contentStartIndex, contentEndtIndex);
+    return elementContent
+  } else {
+    return ""
+  }
+}
+
 const getPost = () => {
   const postConfig = []
   const postsDirectory = path.join(process.cwd(), '/pages/note/postContent')
@@ -76,7 +92,22 @@ const getPost = () => {
     const fullPath = path.join(postsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const htmlResult = marked(fileContents);
-    postConfig.push({ [id]: htmlResult })
+    const h1Content = getFirstElementContent(htmlResult, "h1")
+    const h6Content = getFirstElementContent(htmlResult, "h6")
+    let page
+    if (index === 0) {
+      page = Math.floor((index) / 5)
+    } else {
+      page = Math.floor((index - 1) / 5)
+    }
+    postConfig.push({
+      [id]: {
+        "htmlResult": htmlResult,
+        "title": h1Content,
+        "tag": h6Content,
+        "page": page
+      }
+    })
   })
   fs.writeFile("pages/note/data.json", JSON.stringify(postConfig), function (err, result) {
     if (err) console.log('error', err);
