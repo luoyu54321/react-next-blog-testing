@@ -2,7 +2,7 @@
 #  [實作紀錄] 使用 Github Action (CI/CD), Hackmd 建立即時更新的個人 blog
 ###### Next,Dynamic Route,Github Action,Hackmd,實作筆記
 
-**HackMD 是我習慣的筆記工具，為了實現做完筆記立刻變成一篇文章的懶人魔法 (ゝ∀･)，在 code 個人部落格的時候，我選擇用 HackMD 的 Github 推拉功能，實現內容的即時更新**。
+**HackMD 是我習慣的筆記工具，在 code 個人部落格的時候，為了實現做完筆記一按下 publish，個人部落格立刻產生一篇文章的懶人魔法 (ゝ∀･)，我選擇用 HackMD 的 Github 推拉功能，實現內容的即時更新**。
 
 略過 Create Next App、Next Dynamic Route 等等有詳細官方教學的部分，這份筆記會紀錄——
 
@@ -37,7 +37,7 @@
 檔案內容我是這樣寫的，大部分都是既有模板：
 
 *  push: branches[ main ] ——推送到 main 的時候，就要執行這份 CI
-*  jobs: build: steps: run: npm run build:blogfil ——我在既有模板裡，新增了 generate md to JSON file 的流程，確保檔案處理好之後，才會執行 npm run build 的部分。
+*  jobs: build: steps: run: npm run build:blogfile ——我在既有模板裡，新增了 generate md to JSON file 的流程，確保檔案處理好之後，才會執行 npm run build 的部分。
 *  with: branch: gh-pages ——跑完之後，我的頁面 deploy 到 gh-pages
 ```yml=
 name: Node.js CI
