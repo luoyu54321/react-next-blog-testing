@@ -1,5 +1,5 @@
 
-# 使用 Next.js, Gh-pages, Hackmd 建立即時更新的個人 blog 的經驗分享
+#  [實作紀錄] 使用 Next.js, Gh-pages, Hackmd 建立即時更新的個人 blog
 ###### Next,Dynamic Route,Github Action, Hackmd
 
 
