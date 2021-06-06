@@ -2,7 +2,7 @@
 #  [實作紀錄] 使用 Github Action (CI/CD), Hackmd 建立即時更新的個人 blog
 ###### Next,Dynamic Route,Github Action,Hackmd,實作筆記
 
-**HackMD 是我習慣的筆記工具，在 code 個人部落格的時候，為了實現做完筆記一按下 publish，個人部落格立刻產生一篇文章的懶人魔法 (ゝ∀･)，我選擇用 HackMD 的 Github 推拉功能，實現內容的即時更新**。
+**HackMD 是我習慣的筆記工具，在 code 個人部落格的時候，為了實現做完筆記一按下 publish，個人部落格立刻產生一篇文章，也不用去搬遷文章或適應新的 CMS 後台...的懶人魔法 (ゝ∀･)，我選擇用 HackMD 的 Github 推拉功能，實現內容的即時更新**。
 
 略過 Create Next App、Next Dynamic Route 等等有詳細官方教學的部分，這份筆記會紀錄——
 
