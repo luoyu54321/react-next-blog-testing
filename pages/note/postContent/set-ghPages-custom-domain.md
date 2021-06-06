@@ -1,8 +1,8 @@
 # [實作紀錄] Github pages custom domain 設定
+###### Gh-pages,custom domain,GoDaddy,CNAME
 
 人生第一次買網域，知識量大到我多午睡了一次。
-以下紀錄我的設定過程，附上簡單的名詞解釋。
-如果有任何疑惑或是錯誤的地方，也麻煩提醒我 :)
+以下紀錄我的設定過程，如果有任何疑惑或是錯誤的地方，也麻煩提醒我 :)
 
 等等要做的事情——
 1. 買網域付帳
@@ -26,12 +26,6 @@
 - 修改 name 為 www 的 type CNAME 欄位，指向你的 Github 個人頁面（**不需要加上 repo 的名稱**）
 - 增加一組 type CNAME，name 設定為 blog，也指向 Github 個人頁面。
 ![](https://i.imgur.com/RdMpXYk.png)
-##### DNS 是什麼
-DNS 是
-##### A 是什麼
-A 是
-##### CNAME 是什麼
-CNAME 是
 
 
 ### Github 添加 CNAME 檔案
@@ -45,10 +39,6 @@ CNAME 是
 
 ### 修改 next.config.js prefix
 發佈網站之後發現大跑版...原來是 repo 裡的 domain 變數還沒抽換掉。如果有相關 domain 的環境設定，也別忘了。
-
-
-
-
 
 
 
