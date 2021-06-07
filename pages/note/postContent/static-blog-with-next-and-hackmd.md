@@ -2,7 +2,7 @@
 #  [實作紀錄] 使用 Github Action (CI/CD), Hackmd 建立即時更新的個人 blog
 ###### Next,Dynamic Route,Github Action,Hackmd,實作筆記
 
-**HackMD 是我習慣的筆記工具，在 code 個人部落格的時候，為了實現做完筆記一按下 publish，個人部落格立刻產生一篇文章，也不用去搬遷文章或適應新的 CMS 後台...的懶人魔法 (ゝ∀･)，我選擇用 HackMD 的 Github 推拉功能，實現內容的即時更新**。
+**HackMD 是我習慣的筆記工具，在 code 個人部落格的時候，為了實現做完筆記，一按下 publish，個人部落格立刻產生一篇文章，也不用去搬遷文章或適應新的 CMS 後台...的懶人魔法 (ゝ∀･)，我選擇用 HackMD 的 Github 推拉功能，實現內容的即時更新，而且推拉功能還有像 PR 一樣的 change highlight ，十分親切**。
 
 略過 Create Next App、Next Dynamic Route 等等有詳細官方教學的部分，這份筆記會紀錄——
 
@@ -21,7 +21,7 @@
 3. CICD 流程觸發 generate md to JSON file 的功能
 4. Next SSR 階段，getStaticProps 會去存取 JSON files，變成 note 頁面底下的 dynamic route 以及相應的頁面內容 e.g. /note/how-to-use-git
 
-步驟 4 的部分，之後我打算寫一支處理 note 總覽頁面頁數、標籤分類的 API，把處理內容、頁數、整理格式...的部分獨立出去。
+步驟 4 的部分，本來我打算寫一支處理 note 總覽頁面頁數、標籤分類的 API，把處理內容、頁數、整理格式...的部分獨立出去，結果 Next API居然不支援 Next export uwu
 
 ### Hackmd push md 檔案到 Github
 
