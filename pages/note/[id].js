@@ -83,6 +83,7 @@ const getFirstElementContent = (string, ele) => {
 }
 
 const getPost = () => {
+  //TODO-1 : 這裡只要讀取 JSON 就好不用做 md 內容的轉換
   const svrPostConfig = []
   const clientSidePostConfig = []
   const postsDirectory = path.join(process.cwd(), '/pages/note/postContent')

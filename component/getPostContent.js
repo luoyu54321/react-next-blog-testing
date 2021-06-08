@@ -22,6 +22,7 @@ const getPostContent = () => {
   const postsDirectory = path.join(process.cwd(), '/pages/note/postContent')
   const fileNames = fs.readdirSync(postsDirectory)
   fileNames.map((fileName, index) => {
+    //TODO-2 : 這裡只負責把資料塞進去就好不需要整理
     const id = fileName.replace(/\.md$/, '')
     const fullPath = path.join(postsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
