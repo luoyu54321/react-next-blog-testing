@@ -17,7 +17,7 @@ const getFirstElementContent = (string, ele) => {
   }
 }
 
-const getPost = () => {
+const getPostContent = () => {
   const clientSidePostConfig = []
   const postsDirectory = path.join(process.cwd(), '/pages/note/postContent')
   const fileNames = fs.readdirSync(postsDirectory)
@@ -48,4 +48,4 @@ const getPost = () => {
   })
 }
 
-module.exports.getPost = getPost();
+module.exports.getPostContent = getPostContent();
