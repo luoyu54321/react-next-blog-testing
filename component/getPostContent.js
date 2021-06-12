@@ -4,7 +4,7 @@ var marked = require("marked");
 
 const getPostContent = () => {
   const clientSidePostConfig = []
-  const postsDirectory = path.join(process.cwd(), '/postContent')
+  const postsDirectory = path.join(process.cwd(), '/pages/note/postContent')
   const fileNames = fs.readdirSync(postsDirectory)
   fileNames.map((fileName, index) => {
     const id = fileName.replace(/\.md$/, '')
