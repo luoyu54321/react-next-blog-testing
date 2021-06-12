@@ -2,9 +2,13 @@ import ErrorBoundary from '../../component/errorBoundary'
 import styled from 'styled-components'
 import Link from 'next/link'
 import Head from 'next/head'
+import useSWR from 'swr'
 
 export default function Home() {
   const customData = require('./data.json');
+  const fetcher = (...args) => fetch(...args).then(res => res.json())
+  const { data, error } = useSWR('../api/getPostList?tag=實作紀錄&page=1', fetcher)
+  console.log(data)
 
   return (
     <ErrorBoundary>
