@@ -6,7 +6,7 @@ const blogData = require('./data.json');
 
 
 export default function Posts({ postData }) {
-  const html = postData.content;
+  const html = postData.content.htmlResult;
   return (
     <div>
       <Head>

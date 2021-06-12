@@ -3,8 +3,8 @@
 //TODO-3 : 負責把一堆資料 filter 成 note page 想要的資訊是這裡的工作
 export default (req, res) => {
   const { tag, page } = req.query
-  const h1Content = getFirstElementContent(htmlResult, "h1")
-  const h6Content = getFirstElementContent(htmlResult, "h6")
+  //const h1Content = getFirstElementContent(htmlResult, "h1")
+  //const h6Content = getFirstElementContent(htmlResult, "h6")
   res.status(200).json({ tag: tag, page: page })
 }
 
