@@ -1,13 +1,12 @@
 
 import Link from 'next/link'
-import marked from 'marked'
 import styled from 'styled-components'
 import Head from 'next/head'
 const blogData = require('./data.json');
 
 
 export default function Posts({ postData }) {
-  const html = marked(postData.content);
+  const html = postData.content;
   return (
     <div>
       <Head>
