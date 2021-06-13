@@ -142,11 +142,11 @@ const Content = (props) => {
             <CardContainer>
               <div key={index}>
                 <Link href={`/note/${encodeURIComponent(Object.keys(post))}`}>
-                  <a>
+                  <cardLink>
                     <CardColor randomGreen={CreateRandomNumber(100, 150)} randomBlue={CreateRandomNumber(100, 150)}></CardColor>
                     <CardTag>{Object.values(post)[0].tag}</CardTag>
                     <CardTitle>{Object.values(post)[0].title}</CardTitle>
-                  </a>
+                  </cardLink>
                 </Link>
               </div>
             </CardContainer>
@@ -156,6 +156,10 @@ const Content = (props) => {
     </div>
   )
 }
+
+const cardLink = styled.a`
+  text-decoration: none;
+`
 
 const CardContainer = styled.div`
   display: flex;
@@ -188,4 +192,5 @@ const CardTitle = styled.div`
   margin: 0px 0px 20px;
   font-size: 20px;
   padding: 0px 20px;
+  color: #403c3c;
 `

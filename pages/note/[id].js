@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import Head from 'next/head'
+import _JSXStyle from "styled-jsx/style";
 const blogData = require('./data.json');
 
 
@@ -30,14 +31,9 @@ export default function Posts({ postData }) {
         <link rel="apple-touch-icon-precomposed" href="..//favicon-96x96.png" />
       </Head>
       <ContentContainer>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-        <h5>
-          <Link href="/">
-            <a>HOME PAGE</a>
-          </Link>
-        </h5>
+        <div dangerouslySetInnerHTML={{ __html: html }}></div>
       </ContentContainer>
-    </div>
+    </div >
   )
 }
 
@@ -52,11 +48,11 @@ export async function getStaticPaths() {
 }
 
 const ContentContainer = styled.div`
-  margin-top: 120px;
-  height: 1000px;
-  overflow: hidden;
+  margin: 120px 50px 120px 50px;
+  min-height: 100%;
+  overflow-x: hidden;
   @media only screen and (max-width: 600px) {
-      margin-top: 80px;
+      margin: 80px 0px;
     }
 `
 
