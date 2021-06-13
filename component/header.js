@@ -41,7 +41,7 @@ const Header = () => {
                   return (
                     <React.Fragment key={link}>
                       <Input id={`Button-${index}`} type="radio" name="headerLink" defaultChecked={router.pathname.includes(link)} />
-                      <Button id={`Label-${index}`} for={`Button-${index}`} onClick={() => { clickMenu(link) }}>{title}</Button>
+                      <Button id={`Label-${index}`} htmlFor={`Button-${index}`} onClick={() => { clickMenu(link) }}>{title}</Button>
                     </React.Fragment>
                   )
                 })
