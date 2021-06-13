@@ -2,9 +2,11 @@ import ErrorBoundary from '../../component/errorBoundary'
 import styled from 'styled-components'
 import Link from 'next/link'
 import Head from 'next/head'
+import { GetAllTag } from '../../component/getAllTag'
 
 export default function Home() {
   const customData = require('./data.json');
+  console.log(GetAllTag());
 
   return (
     <ErrorBoundary>
