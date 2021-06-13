@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import Head from 'next/head'
 import { GetAllTag } from '../../component/getAllTag'
+import { GetArticleList } from '../../component/getArticleList'
 
 export default function Home() {
   const customData = require('./data.json');
   console.log(GetAllTag());
+  console.log(GetArticleList('實作筆記', 2, 1));
 
   return (
     <ErrorBoundary>
