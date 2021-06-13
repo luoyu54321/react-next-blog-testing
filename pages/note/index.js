@@ -23,6 +23,9 @@ export default function Home() {
         <link rel="icon" type="image/png" sizes="32x32" href="..//favicon-32x32.png"></link>
         <link rel="icon" type="image/png" sizes="96x96" href="..//favicon-96x96.png"></link>
         <link rel="icon" type="image/png" sizes="16x16" href=".//favicon-16x16.png"></link>
+        <link rel="apple-touch-icon" href="..//favicon-96x96.png"></link>
+        <link rel="shortcut icon" href="..//favicon-96x96.png" />
+        <link rel="apple-touch-icon-precomposed" href="..//favicon-96x96.png" />
       </Head>
       <ContentContainer>
         {customData.map((post, index) => {
