@@ -118,7 +118,7 @@ const PageButton = styled.div`
 
 const ContentContainer = styled.div`
   margin-top: 120px;
-  height: 1000px;
+  margin-bottom: 160px;
   @media only screen and (max-width: 600px) {
       margin-top: 80px;
     }
