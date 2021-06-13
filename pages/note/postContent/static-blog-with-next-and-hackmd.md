@@ -21,7 +21,6 @@
 3. CICD 流程觸發 generate md to JSON file 的功能
 4. Next SSR 階段，getStaticProps 會去存取 JSON files，變成 note 頁面底下的 dynamic route 以及相應的頁面內容 e.g. /note/how-to-use-git
 
-步驟 4 的部分，本來我打算寫一支處理 note 總覽頁面頁數、標籤分類的 API，把處理內容、頁數、整理格式...的部分獨立出去，結果 Next API居然不支援 Next export uwu
 
 ### Hackmd push md 檔案到 Github
 
@@ -112,6 +111,6 @@ const getPost = () => {
 
 ### 侷限性
 
-Hackmd 渲染到畫面上後，有些東西出不來，例如 YouTube 影片的鑲嵌。還好這個部分影響不大，此外，為了讓部落格 review 頁面就可以先拿到中文標題，放進 meta data 裡，針對 .md 檔案還要做一些繁複的整理，抽取出我們要使用的部分。
+gh-pages 負責 static content，檔案必需要先被 compile，如果我想要使用 Next.js 寫 API，就會發現 Next API 不支援 export。必須要搭配其他方法，例如我拆掉重練直接使用 Vercel deploy，或者使用 AWS Lambda 的服務。（[AWS Lamda + gh-pages](https://medium.com/@raphaelvigee/serverless-hosting-with-github-pages-aws-lambda-3c19e55d2cc4) 的教學文章，pin 起來之後可能會實作看看）
 
-
+在這個專案的過程中，剛好有機會碰到了一些 severless 的資訊，人家說實際動手作能夠學習更多所言不假。
