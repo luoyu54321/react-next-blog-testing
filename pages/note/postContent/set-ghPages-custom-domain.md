@@ -1,5 +1,5 @@
 # [實作紀錄] Github pages custom domain 設定
-###### Gh-pages,custom domain,GoDaddy,CNAME,實作筆記
+###### domain,實作筆記
 
 人生第一次買網域，知識量大到我多午睡了一次。
 以下紀錄我的設定過程，如果有任何疑惑或是錯誤的地方，也麻煩提醒我 :)
