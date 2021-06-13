@@ -4,11 +4,31 @@ import Link from 'next/link'
 import Head from 'next/head'
 import { GetAllTag } from '../../component/getAllTag'
 import { GetArticleList } from '../../component/getArticleList'
+import React, { useState, useEffect } from 'react';
 
 export default function Home() {
-  const customData = require('./data.json');
-  console.log(GetAllTag());
-  console.log(GetArticleList('實作筆記', 2, 1));
+  const allTag = GetAllTag();
+  const [tag, setTag] = useState(null);
+  const [page, setPage] = useState(1);
+  let articlesData = GetArticleList(tag, page, 1);
+  let { pageCount } = articlesData;
+  let pages = []
+  for (let i = 0; i < pageCount; i++) { pages.push(i + 1) };
+
+  useEffect(
+    () => {
+      setPage(1);
+      articlesData = GetArticleList(tag, page, 1);
+    },
+    [tag]
+  );
+
+  useEffect(
+    () => {
+      articlesData = GetArticleList(tag, page, 1);
+    },
+    [page]
+  );
 
   return (
     <ErrorBoundary>
@@ -32,16 +52,18 @@ export default function Home() {
         <link rel="apple-touch-icon-precomposed" href="..//favicon-96x96.png" />
       </Head>
       <ContentContainer>
-        {customData.map((post, index) => {
+        <div onClick={() => { setTag(null) }}>All</div>
+        {allTag.map((tag) => {
           return (
-            <li key={index}>
-              <Link href={`/note/${encodeURIComponent(Object.keys(post))}`}>
-                <a>{Object.keys(post)}</a>
-              </Link>
-            </li>
+            <div onClick={() => { setTag(tag) }}>{tag}</div>
           )
         })}
-      Hey this is post page
+        <Content articlesData={articlesData} />
+        {pages.map((page) => {
+          return (
+            <div onClick={() => { setPage(page) }}>{page}</div>
+          )
+        })}
       </ContentContainer>
     </ErrorBoundary>
   )
@@ -54,3 +76,25 @@ const ContentContainer = styled.div`
       margin-top: 80px;
     }
 `
+
+const Content = (props) => {
+  const { articlesData } = props;
+  const { article } = articlesData;
+  console.log(articlesData);
+  return (
+    <div>
+      {
+        article && article.map((post, index) => {
+          return (
+            <li key={index}>
+              <Link href={`/note/${encodeURIComponent(Object.keys(post))}`}>
+                <a>{Object.keys(post)}</a>
+              </Link>
+            </li>
+          )
+        })
+      }
+    </div>
+  )
+}
+

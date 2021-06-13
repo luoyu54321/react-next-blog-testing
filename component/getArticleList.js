@@ -1,9 +1,3 @@
-/*
-tag => filter 出內容
-per page => 一頁有多少文章咧
-now page => 現在是第幾頁
-*/
-
 const articles = require('../pages/note/data.json');
 
 export const GetArticleList = (tag, page, perPage) => {
