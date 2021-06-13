@@ -52,22 +52,66 @@ export default function Home() {
         <link rel="apple-touch-icon-precomposed" href="..//favicon-96x96.png" />
       </Head>
       <ContentContainer>
-        <div onClick={() => { setTag(null) }}>All</div>
-        {allTag.map((tag) => {
-          return (
-            <div onClick={() => { setTag(tag) }}>{tag}</div>
-          )
-        })}
+        <TagContainer>
+          <TagButton onClick={() => { setTag(null) }} checked={tag === null}>All</TagButton>
+          {allTag.map((tagChoice) => {
+            console.log(tagChoice === tag)
+            return (
+              <TagButton onClick={() => { setTag(tagChoice) }} checked={tagChoice === tag}>{tagChoice}</TagButton>
+            )
+          })}
+        </TagContainer>
         <Content articlesData={articlesData} />
-        {pages.map((page) => {
-          return (
-            <div onClick={() => { setPage(page) }}>{page}</div>
-          )
-        })}
+        <PageContainer>
+          {pages.map((pageChoice) => {
+            return (
+              <PageButton onClick={() => { setPage(pageChoice) }} checked={page === pageChoice}>{pageChoice}</PageButton>
+            )
+          })}
+        </PageContainer>
       </ContentContainer>
     </ErrorBoundary>
   )
 }
+
+const TagContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0px 20px;
+  `
+
+const TagButton = styled.div`
+  background-color: ${props => props.checked ? "#ff6a00" : "white"};
+  color: ${props => props.checked ? "white" : "grey"};
+  padding: 5px 15px;
+  border-radius: 50px;
+  margin: 5px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  border: solid 1px #edf0f5;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.6;
+  }
+`
+const PageContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 0px 20px;
+`
+const PageButton = styled.div`
+  background-color: ${props => props.checked ? "#ff6a00" : "white"};
+  color: ${props => props.checked ? "white" : "grey"};
+  padding: 10px 10px;
+  border-radius: 5px;
+  margin: 5px;
+  border: solid 1px #edf0f5;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.6;
+  }
+`
 
 const ContentContainer = styled.div`
   margin-top: 120px;
