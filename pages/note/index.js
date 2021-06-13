@@ -7,10 +7,11 @@ import { GetArticleList } from '../../component/getArticleList'
 import React, { useState, useEffect } from 'react';
 
 export default function Home() {
+  const postPerPage = 2;
   const allTag = GetAllTag();
   const [tag, setTag] = useState(null);
   const [page, setPage] = useState(1);
-  let articlesData = GetArticleList(tag, page, 1);
+  let articlesData = GetArticleList(tag, page, postPerPage);
   let { pageCount } = articlesData;
   let pages = []
   for (let i = 0; i < pageCount; i++) { pages.push(i + 1) };
@@ -18,14 +19,14 @@ export default function Home() {
   useEffect(
     () => {
       setPage(1);
-      articlesData = GetArticleList(tag, page, 1);
+      articlesData = GetArticleList(tag, page, postPerPage);
     },
     [tag]
   );
 
   useEffect(
     () => {
-      articlesData = GetArticleList(tag, page, 1);
+      articlesData = GetArticleList(tag, page, postPerPage);
     },
     [page]
   );
@@ -61,7 +62,6 @@ export default function Home() {
             )
           })}
         </TagContainer>
-        <Content articlesData={articlesData} />
         <PageContainer>
           {pages.map((pageChoice) => {
             return (
@@ -69,6 +69,7 @@ export default function Home() {
             )
           })}
         </PageContainer>
+        <Content articlesData={articlesData} />
       </ContentContainer>
     </ErrorBoundary>
   )
@@ -94,11 +95,13 @@ const TagButton = styled.div`
     opacity: 0.6;
   }
 `
+
+
 const PageContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
-  padding: 0px 20px;
+  padding: 20px 20px;
+  justify-content: flex-end;
 `
 const PageButton = styled.div`
   background-color: ${props => props.checked ? "#ff6a00" : "white"};
@@ -121,6 +124,12 @@ const ContentContainer = styled.div`
     }
 `
 
+const CreateRandomNumber = (min, max) => {
+  const randomCount = Math.floor(Math.random() * max) + 1
+  const randomNumber = randomCount + min
+  return randomNumber
+}
+
 const Content = (props) => {
   const { articlesData } = props;
   const { article } = articlesData;
@@ -130,11 +139,17 @@ const Content = (props) => {
       {
         article && article.map((post, index) => {
           return (
-            <li key={index}>
-              <Link href={`/note/${encodeURIComponent(Object.keys(post))}`}>
-                <a>{Object.keys(post)}</a>
-              </Link>
-            </li>
+            <CardContainer>
+              <div key={index}>
+                <Link href={`/note/${encodeURIComponent(Object.keys(post))}`}>
+                  <a>
+                    <CardColor randomGreen={CreateRandomNumber(100, 150)} randomBlue={CreateRandomNumber(100, 150)}></CardColor>
+                    <CardTag>{Object.values(post)[0].tag}</CardTag>
+                    <CardTitle>{Object.values(post)[0].title}</CardTitle>
+                  </a>
+                </Link>
+              </div>
+            </CardContainer>
           )
         })
       }
@@ -142,3 +157,35 @@ const Content = (props) => {
   )
 }
 
+const CardContainer = styled.div`
+  display: flex;
+  flex-flow: column wrap;
+  margin: 25px auto;
+  max-width: 650px;
+  width: 85%;
+  border-radius: 15px;
+  border: solid 1px #edf0f5;
+  background-color: white;
+  overflow: hidden;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.6;
+  }
+`
+const CardColor = styled.div`
+  background-image: ${props => `linear-gradient(300deg, rgb(255, 99, ${props.randomBlue}), rgb(255, ${props.randomGreen}, 0))`};
+  height: 200px;
+`
+const CardTag = styled.div`
+  margin: 10px 0px;
+  font-size: 14px;
+  color: grey;
+  padding: 0px 20px;
+`
+const CardTitle = styled.div`
+  margin: 0px 0px 20px;
+  font-size: 20px;
+  padding: 0px 20px;
+`
