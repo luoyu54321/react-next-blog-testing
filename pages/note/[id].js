@@ -52,7 +52,7 @@ const ContentContainer = styled.div`
   min-height: 100%;
   overflow-x: hidden;
   @media only screen and (max-width: 600px) {
-      margin: 80px 0px;
+      margin: 80px 25px;
     }
 `
 
